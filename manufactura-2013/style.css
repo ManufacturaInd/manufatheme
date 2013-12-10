@@ -1,0 +1,27 @@
+/*
+Theme Name: Manufactura Timeline
+Theme URI: http://manufacturaindependente.org
+Author: Manufactura Independente
+Author URI: http://manufacturaindependente.org
+Description: Based in the TwentyThirteen WordPress theme. Uses Foundation 5 for as front.end framework.
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: flexible-width, custom-menu, editor-style, featured-images, microformats, post-formats, rtl-language-support, sticky-post, translation-ready
+Text Domain: manufactura
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+
+
+@font-face {
+  font-family: 'Roboto Medium';
+  src: local('Roboto Medium'), url('../fonts/Roboto/Roboto-Medium.otf') format('opentype');
+}
+
+
+body {
+  font-family: 'Roboto Medium', 'DejaVu Sans', sans-serif;
+}
+
