@@ -25,3 +25,10 @@ body {
   font-family: 'Roboto Medium', 'DejaVu Sans', sans-serif;
 }
 
+
+.post-edit-link {
+  font-size: 90%;
+  display: block;
+  float: right;
+  text-transform: uppercase;
+}

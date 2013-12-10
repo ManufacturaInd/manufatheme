@@ -18,25 +18,33 @@ get_header(); ?>
 
 	<div id="primary" class="content-area">
 		<div id="content" class="site-content" role="main">
-		<?php if ( have_posts() ) : ?>
-			<?php while ( have_posts() ) : the_post(); ?>
-        <!--<?php $foundation_classes = array('columns','row'); ?>-->
-          <article id="post-<?php the_ID(); ?>" <?php post_class('row'); ?>>
-	          <header class="entry-header">
-		          <h1 class="entry-title columns large-6">
+		
+		<?php if (have_posts()) : ?>
+		    <?php $timeline_query = new WP_Query('category_name=news');
+	        while ($timeline_query->have_posts()) : $timeline_query->the_post();
+	        $do_not_duplicate = $post->ID;?>
+          
+          <?php if ( is_year() ) :
+						printf( __( 'Yearly Archives: %s', 'twentythirteen' ), get_the_date( _x( 'Y', 'yearly archives date format', 'twentythirteen' ) ) );
+					endif; ?>
+          <!--<?php $foundation_classes = array('columns','row'); ?>-->
+            <article id="post-<?php the_ID(); ?>" <?php post_class('row'); ?>>
+              <div class="entry-meta large-12 columns">
+                <?php edit_post_link( __( 'Edit', 'twentythirteen' ), '<span class="edit-link">', '</span>' ); ?>
+              </div>
+		          <p class="entry-header large-2 columns">&nbsp;</p>
+	            <h1 class="entry-title columns large-6">
 			          <a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
 		          </h1>
-	          </header><!-- .entry-header -->
-	          <footer class="entry-meta columns large-4">
-			        <?php twentythirteen_onlytags(); ?>
-	          </footer><!-- .entry-meta -->
-          </article><!-- #post -->
+	            <footer class="entry-summary columns large-4">
+			          <?php the_excerpt(); ?>
+	            </footer><!-- .entry-meta -->
+            </article><!-- #post -->
 			
-			<?php endwhile; ?>
-
-		<?php else : ?>
-			<?php get_template_part( 'content', 'none' ); ?>
-		<?php endif; ?>
+    	<?php endwhile; ?>
+      <?php else : ?>
+			  <?php get_template_part( 'content', 'none' ); ?>
+		  <?php endif; ?>
 
 		</div><!-- #content -->
 	</div><!-- #primary -->
