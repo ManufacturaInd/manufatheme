@@ -15,7 +15,7 @@
 		<header id="masthead" class="site-header row" role="banner">
 			<a class="home-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
 				<h1 class="site-title large-12 columns"><?php bloginfo( 'name' ); ?></h1>
-				<h2 class="site-description large-12 columns"><?php bloginfo( 'description' ); ?></h2>
+				<h3 class="site-description large-12 columns"><?php bloginfo( 'description' ); ?></h3>
 			</a>
       <p class="large-12 columns">We're moving things about. Mi casa es su casa, but things might be messy.</p>
 		</header><!-- #masthead -->

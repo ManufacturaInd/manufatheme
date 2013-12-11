@@ -2,49 +2,51 @@
 /**
  * The main template file
  *
- * This is the most generic template file in a WordPress theme and one of the
- * two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * For example, it puts together the home page when no home.php file exists.
- *
- * @link http://codex.wordpress.org/Template_Hierarchy
- *
- * @package WordPress
- * @subpackage Twenty_Thirteen
- * @since Twenty Thirteen 1.0
  */
 
 get_header(); ?>
 
 	<div id="primary" class="content-area">
-		<div id="content" class="site-content" role="main">
+		<div id="content" class="site-content row" role="main">
 		
-		<?php if (have_posts()) : ?>
-		    <?php $timeline_query = new WP_Query('category_name=news');
-	        while ($timeline_query->have_posts()) : $timeline_query->the_post();
-	        $do_not_duplicate = $post->ID;?>
-          
-          <?php if ( is_year() ) :
-						printf( __( 'Yearly Archives: %s', 'twentythirteen' ), get_the_date( _x( 'Y', 'yearly archives date format', 'twentythirteen' ) ) );
-					endif; ?>
-          <!--<?php $foundation_classes = array('columns','row'); ?>-->
-            <article id="post-<?php the_ID(); ?>" <?php post_class('row'); ?>>
-              <div class="entry-meta large-12 columns">
-                <?php edit_post_link( __( 'Edit', 'twentythirteen' ), '<span class="edit-link">', '</span>' ); ?>
-              </div>
-		          <p class="entry-header large-2 columns">&nbsp;</p>
-	            <h1 class="entry-title columns large-6">
-			          <a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
-		          </h1>
-	            <footer class="entry-summary columns large-4">
-			          <?php the_excerpt(); ?>
-	            </footer><!-- .entry-meta -->
-            </article><!-- #post -->
-			
-    	<?php endwhile; ?>
-      <?php else : ?>
-			  <?php get_template_part( 'content', 'none' ); ?>
-		  <?php endif; ?>
+      <?php
+
+        $blogtime = date('Y');
+        $prev_limit_year = $blogtime - 1;
+        $prev_year = '';
+
+        $args = array(
+                 'category' => 'news',
+                 'category' => 'work-in-progress',
+        );
+      
+        $postsbyyear = new WP_Query($args);
+        while($postsbyyear->have_posts()) {
+            $postsbyyear->the_post();
+            $do_not_duplicate = $post->ID;
+
+            if(get_the_time('Y') != $prev_year) {
+              echo "<h2 class=\"year-title columns large-12\">".get_the_time('Y')."</h2>\n\n";
+             }
+      ?>
+
+      <article id="post-<?php the_ID(); ?>" <?php post_class('large-12 columns'); ?>>
+        <div class="entry-meta columns large-12">
+          <?php edit_post_link( __( 'Edit', 'twentythirteen' ), '<span class="edit-link">', '</span>' ); ?>
+        </div>
+        <p class="entry-header columns large-2">&nbsp;</p>
+        <h1 class="entry-title columns large-6">
+          <a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
+        </h1>
+        <footer class="entry-summary columns large-4">
+          <?php the_excerpt(); ?>
+        </footer><!-- .entry-meta -->
+      </article><!-- #post -->
+
+      <?php
+          $prev_year = get_the_time('Y');
+        }
+		  ?>
 
 		</div><!-- #content -->
 	</div><!-- #primary -->
