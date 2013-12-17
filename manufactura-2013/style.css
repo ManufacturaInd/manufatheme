@@ -23,8 +23,18 @@ Use it to make something cool, have fun, and share what you've learned with othe
 */
 
 @font-face {
+  font-family: 'Roboto Light';
+  src: local('Roboto Light'), url('fonts/Roboto/Roboto-Light.ttf') format('opentype');
+}
+
+@font-face {
   font-family: 'Roboto Medium';
-  src: local('Roboto Medium'), url('../fonts/Roboto/Roboto-Medium.otf') format('opentype');
+  src: local('Roboto Medium'), url('fonts/Roboto/Roboto-Medium.ttf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Roboto Bold';
+  src: local('Roboto Bold'), url('fonts/Roboto/Roboto-Bold.ttf') format('opentype');
 }
 
 
@@ -42,6 +52,16 @@ a {
   color: #7137c8;
 }
 
+/* Typography
+*/
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto Light';
+}
+
+strong {
+  font-family: 'Roboto Bold';
+}
 
 /* Posts in the homepage 
 */

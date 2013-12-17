@@ -7,7 +7,7 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class('row'); ?>>
 	<header class="entry-header large-12 columns">
     <div class="entry-meta columns large-12">
       <?php edit_post_link( __( 'Edit', 'twentythirteen' ), '<span class="edit-link">', '</span>' ); ?>
@@ -19,12 +19,12 @@
 		<?php endif; ?>
 
 		<?php if ( is_single() ) : ?>
-		<h1 class="entry-title large-10 columns"><?php the_title(); ?></h1>
+		<h2 class="entry-title large-10 columns"><?php the_title(); ?></h2>
 		<p class="entry-date large-2 columns"><?php twentythirteen_entry_date(); ?></p>
 		<?php else : ?>
-		<h1 class="entry-title">
+		<h2 class="entry-title">
 			<a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>HI
-		</h1>
+		</h2>
 		<?php endif; // is_single() ?>
 	</header><!-- .entry-header -->
 
@@ -32,10 +32,24 @@
 	<div class="entry-summary">
 		<?php the_excerpt(); ?>
 	</div><!-- .entry-summary -->
+	<?php elseif ( is_single() ) : // Only display sidebar tags and image grid for Single ?>
+	<div class="single-sidebar large-4 columns">
+		<div class="entry-meta">
+			<?php twentythirteen_onlytags(); ?>
+		</div><!-- .entry-meta -->
+		<div class="image-grid">
+			<ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
+				<?php imagegrid_get_images("$post->ID"); ?>
+			</ul>
+		</div><!-- .image-grid-->
+	</div><!-- .single-sidebar -->
+	<div class="entry-content large-8 columns">
+		<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentythirteen' ) ); ?>
+		<?php wp_link_pages( array( 'before' => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'twentythirteen' ) . '</span>', 'after' => '</div>', 'link_before' => '<span>', 'link_after' => '</span>' ) ); ?>
+	</div><!-- .entry-content -->
 	<?php else : ?>
 	<div class="entry-meta large-4 columns">
   	<?php twentythirteen_onlytags(); ?>
-  	<p>Boing</p>
   </div><!-- .entry-meta -->
 	<div class="entry-content large-8 columns">
 		<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentythirteen' ) ); ?>

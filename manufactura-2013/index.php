@@ -7,7 +7,7 @@
 get_header(); ?>
 
 	<div id="primary" class="content-area">
-		<div id="content" class="site-content row" role="main">
+		<div id="content" class="site-content" role="main">
 		
       <?php
 
@@ -26,11 +26,11 @@ get_header(); ?>
             $do_not_duplicate = $post->ID;
 
             if(get_the_time('Y') != $prev_year) {
-              echo "<h2 class=\"year-title columns large-12\">".get_the_time('Y')."</h2>\n\n";
+              echo "<h2 class=\"year-title row\">".get_the_time('Y')."</h2>\n\n";
              }
       ?>
 
-      <article id="post-<?php the_ID(); ?>" <?php post_class('large-12 columns'); ?>>
+      <article id="post-<?php the_ID(); ?>" <?php post_class('row'); ?>>
         <div class="entry-meta columns large-12">
           <?php edit_post_link( __( 'Edit', 'twentythirteen' ), '<span class="edit-link">', '</span>' ); ?>
         </div>

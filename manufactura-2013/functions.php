@@ -286,12 +286,13 @@ endif;
 if ( ! function_exists( 'twentythirteen_onlytags' ) ) :
 function twentythirteen_onlytags() {
 	// Translators: used between list items, there is a space after the comma.
-	$tag_list = get_the_tag_list( '', __( ', ', 'twentythirteen' ) );
+	$tag_list = get_the_tag_list( '', __( ' ', 'twentythirteen' ) );
 	if ( $tag_list ) {
 		echo '<span class="tags-links">' . $tag_list . '</span>';
 	}
 }
 endif;
+
 
 if ( ! function_exists( 'twentythirteen_entry_date' ) ) :
 /**
@@ -481,3 +482,34 @@ function twentythirteen_customize_preview_js() {
 	wp_enqueue_script( 'twentythirteen-customizer', get_template_directory_uri() . '/js/theme-customizer.js', array( 'customize-preview' ), '20130226', true );
 }
 add_action( 'customize_preview_init', 'twentythirteen_customize_preview_js' );
+
+/**
+ * Adding image grid for individual post page template
+ *
+ * code from:
+ * http://revelationconcept.com/wordpress-display-all-post-attachment-images-in-a-slider/
+ */
+
+if ( function_exists( 'add_image_size' ) ) { 
+	add_image_size( 'imagegrid-thumb', 300, 300, true ); //(cropped)
+}
+
+function imagegrid_get_images($post_id) {
+  global $post;	 
+  $thumbnail_ID = get_post_thumbnail_id();
+
+  $images = get_children( array('post_parent' => $post_id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => 'ASC', 'orderby' => 'menu_order ID') );
+
+  if ($images) :
+      foreach ($images as $attachment_id => $image) :
+      if ( $image->ID != $thumbnail_ID ) :
+
+        $img_alt = get_post_meta($attachment_id, '_wp_attachment_image_alt', true); //alt
+        if ($img_alt == '') : $img_alt = $image->post_title; endif;
+
+        $big_array = image_downsize( $image->ID, 'imagegrid-thumb' );
+        $img_url = $big_array[0];
+
+        echo '<li><img src="' . $img_url . '" alt="' . $img_alt . '" /></li>';
+
+ endif; endforeach; endif; }

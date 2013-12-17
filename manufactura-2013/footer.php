@@ -6,7 +6,7 @@
 ?>
 
 		</div><!-- #main -->
-		<footer id="colophon" class="site-footer" role="contentinfo">
+		<footer id="colophon" class="site-footer row" role="contentinfo">
 			<?php get_sidebar( 'main' ); ?>
 		</footer><!-- #colophon -->
 	</div><!-- #page -->

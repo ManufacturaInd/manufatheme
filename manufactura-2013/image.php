@@ -7,8 +7,8 @@
 get_header(); ?>
 
 	<div id="primary" class="content-area">
-		<div id="content" class="site-content row" role="main">
-			<article id="post-<?php the_ID(); ?>" <?php post_class( 'image-attachment' ); ?>>
+		<div id="content" class="site-content" role="main">
+			<article id="post-<?php the_ID(); ?>" <?php post_class( 'image-attachment row' ); ?>>
 				<header class="entry-header">
 					<h1 class="entry-title"><?php the_title(); ?></h1>
 
