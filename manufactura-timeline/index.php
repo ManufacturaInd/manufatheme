@@ -35,9 +35,9 @@ get_header(); ?>
           <?php edit_post_link( __( 'Edit', 'twentythirteen' ), '<span class="edit-link">', '</span>' ); ?>
         </div>
         <p class="entry-header columns large-2">&nbsp;</p>
-        <h1 class="entry-title columns large-6">
+        <h2 class="entry-title columns large-6">
           <a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
-        </h1>
+        </h2>
         <footer class="entry-summary columns large-4">
           <?php the_excerpt(); ?>
         </footer><!-- .entry-meta -->

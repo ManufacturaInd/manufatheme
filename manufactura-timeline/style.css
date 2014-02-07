@@ -24,17 +24,17 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 @font-face {
   font-family: 'Roboto Light';
-  src: local('Roboto Light'), url('fonts/Roboto/Roboto-Light.ttf') format('opentype');
+  src: local('Roboto Light'), url('fonts/Roboto/Roboto-Light.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Roboto Medium';
-  src: local('Roboto Medium'), url('fonts/Roboto/Roboto-Medium.ttf') format('opentype');
+  src: local('Roboto Medium'), url('fonts/Roboto/Roboto-Medium.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Roboto Bold';
-  src: local('Roboto Bold'), url('fonts/Roboto/Roboto-Bold.ttf') format('opentype');
+  src: local('Roboto Bold'), url('fonts/Roboto/Roboto-Bold.ttf') format('truetype');
 }
 
 
@@ -68,6 +68,10 @@ strong {
 
 #content .hentry {
   border-top: 1px solid #e3dbde;
+}
+
+#content .hentry hentry-title {
+	margin-top: 0;
 }
 
 .entry-meta {
