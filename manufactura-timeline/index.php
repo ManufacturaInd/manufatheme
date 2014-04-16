@@ -12,38 +12,36 @@ get_header(); ?>
       <?php
 
         $blogtime = date('Y');
-        $prev_limit_year = $blogtime - 1;
         $prev_year = '';
+				$prev_month = '';
 
         $args = array(
-                 'category' => 'news',
-                 'category' => 'work-in-progress',
+                 'category' => 'portfolio',
+         					'posts_per_page' => 50
         );
       
-        $postsbyyear = new WP_Query($args);
-        while($postsbyyear->have_posts()) {
-            $postsbyyear->the_post();
-            $do_not_duplicate = $post->ID;
+        $postsbymonth = new WP_Query($args);
+        while($postsbymonth->have_posts()) {
+          $postsbymonth->the_post();
+          $do_not_duplicate = $post->ID;
 
-            if(get_the_time('Y') != $prev_year) {
-              echo "<h2 class=\"year-title row\">".get_the_time('Y')."</h2>\n\n";
-             }
-      ?>
+				?>
 
       <article id="post-<?php the_ID(); ?>" <?php post_class('row'); ?>>
-        <div class="entry-meta columns large-12">
-          <?php edit_post_link( __( 'Edit', 'twentythirteen' ), '<span class="edit-link">', '</span>' ); ?>
-        </div>
-        <p class="entry-header columns large-2">&nbsp;</p>
+
+					<?php if(get_the_time('M') != $prev_month || get_the_time('Y') != $prev_year && get_the_time('Y') == $prev_limit_year) {
+        		echo "<span class=\"date-title columns large-1 tight\">".get_the_time('M Y')."</span>\n\n";
+					}
+					?>
         <h2 class="entry-title columns large-6">
           <a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
         </h2>
-        <footer class="entry-summary columns large-4">
+        <footer class="entry-summary columns large-5 tight">
           <?php the_excerpt(); ?>
         </footer><!-- .entry-meta -->
       </article><!-- #post -->
-
       <?php
+          $prev_month = get_the_time('Y');
           $prev_year = get_the_time('Y');
         }
 		  ?>

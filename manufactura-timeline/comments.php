@@ -12,7 +12,7 @@ if ( post_password_required() )
 	return;
 ?>
 
-<div id="comments" class="comments-area">
+<div id="comments" class="comments-area row">
 
 	<?php if ( have_comments() ) : ?>
 		<h2 class="comments-title">
@@ -44,7 +44,7 @@ if ( post_password_required() )
 		<?php endif; // Check for comment navigation ?>
 
 		<?php if ( ! comments_open() && get_comments_number() ) : ?>
-		<p class="no-comments"><?php _e( 'Comments are closed.' , 'twentythirteen' ); ?></p>
+		<p class="no-comments row"><?php _e( 'Comments are closed.' , 'twentythirteen' ); ?></p>
 		<?php endif; ?>
 
 	<?php endif; // have_comments() ?>

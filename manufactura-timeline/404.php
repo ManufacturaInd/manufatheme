@@ -14,7 +14,7 @@ get_header(); ?>
 			</header>
 
 			<div class="page-wrapper">
-				<div class="page-content">
+				<div class="page-content row">
 					<h2 class="row"><?php _e( 'This is somewhat embarrassing, isn&rsquo;t it?', 'twentythirteen' ); ?></h2>
 					<p class="row"><?php _e( 'It looks like nothing was found at this location. Maybe try a search?', 'twentythirteen' ); ?></p>
 

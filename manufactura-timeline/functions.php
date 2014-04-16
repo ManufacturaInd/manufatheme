@@ -204,15 +204,13 @@ function twentythirteen_paging_nav() {
 		return;
 	?>
 	<nav class="navigation paging-navigation" role="navigation">
-		<h1 class="screen-reader-text"><?php _e( 'Posts navigation', 'twentythirteen' ); ?></h1>
-		<div class="nav-links">
-
+		<div class="nav-links row">
 			<?php if ( get_next_posts_link() ) : ?>
-			<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'twentythirteen' ) ); ?></div>
+			<div class="nav-previous large-6 tight"><?php next_posts_link( __( '<span class="meta-nav columns">&larr;</span> Older posts', 'twentythirteen' ) ); ?></div>
 			<?php endif; ?>
 
 			<?php if ( get_previous_posts_link() ) : ?>
-			<div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'twentythirteen' ) ); ?></div>
+			<div class="nav-next large-6 tight"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'twentythirteen' ) ); ?></div>
 			<?php endif; ?>
 
 		</div><!-- .nav-links -->
@@ -240,12 +238,13 @@ function twentythirteen_post_nav() {
 		return;
 	?>
 	<nav class="navigation post-navigation" role="navigation">
-		<h1 class="screen-reader-text"><?php _e( 'Post navigation', 'twentythirteen' ); ?></h1>
-		<div class="nav-links">
-
-			<?php previous_post_link( '%link', _x( '<span class="meta-nav">&larr;</span> %title', 'Previous post link', 'twentythirteen' ) ); ?>
-			<?php next_post_link( '%link', _x( '%title <span class="meta-nav">&rarr;</span>', 'Next post link', 'twentythirteen' ) ); ?>
-
+		<div class="nav-links row">
+			<div class="nav-previous large-6 tight">
+				<?php previous_post_link( '%link', _x( '<span class="meta-nav">&larr;</span> %title', 'Previous post link', 'twentythirteen' ) ); ?>
+			</div>
+			<div class="nav-next large-6 tight">
+				<?php next_post_link( '%link', _x( '%title <span class="meta-nav">&rarr;</span>', 'Next post link', 'twentythirteen' ) ); ?>
+			</div>
 		</div><!-- .nav-links -->
 	</nav><!-- .navigation -->
 	<?php
@@ -513,3 +512,17 @@ function imagegrid_get_images($post_id) {
         echo '<li><img src="' . $img_url . '" alt="' . $img_alt . '" /></li>';
 
  endif; endforeach; endif; }
+
+/* Adding support for custom template for Portfolio single post pages
+*/
+
+ 
+function get_custom_cat_template($single_template) {
+     global $post;
+       if ( in_category( 'portfolio' )) {
+          $single_template = dirname( __FILE__ ) . '/single-portfolio.php';
+     }
+     return $single_template;
+}
+ 
+add_filter( "single_template", "get_custom_cat_template" ) ;

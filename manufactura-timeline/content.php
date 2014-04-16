@@ -7,57 +7,45 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class('row'); ?>>
-	<header class="entry-header large-12 columns">
-    <div class="entry-meta columns large-12">
-      <?php edit_post_link( __( 'Edit', 'twentythirteen' ), '<span class="edit-link">', '</span>' ); ?>
-    </div>
-		<?php if ( has_post_thumbnail() && ! post_password_required() ) : ?>
-		<div class="entry-thumbnail">
-			<?php the_post_thumbnail(); ?>
-		</div>
-		<?php endif; ?>
-
+<article id="post-<?php the_ID(); ?>">
+	<header class="entry-header row">
 		<?php if ( is_single() ) : ?>
-		<h2 class="entry-title large-10 columns"><?php the_title(); ?></h2>
-		<p class="entry-date large-2 columns"><?php twentythirteen_entry_date(); ?></p>
+		<h2 class="entry-title large-10 columns tight"><?php the_title(); ?></h2>
+		<p class="entry-date large-2 columns tight"><?php twentythirteen_entry_date(); ?></p>
 		<?php else : ?>
 		<h2 class="entry-title">
-			<a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>HI
+			<a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
 		</h2>
 		<?php endif; // is_single() ?>
 	</header><!-- .entry-header -->
 
 	<?php if ( is_search() ) : // Only display Excerpts for Search ?>
-	<div class="entry-summary">
-		<?php the_excerpt(); ?>
-	</div><!-- .entry-summary -->
-	<?php elseif ( is_single() ) : // Only display sidebar tags and image grid for Single ?>
-	<div class="single-sidebar large-4 columns">
-		<div class="entry-meta">
-			<?php twentythirteen_onlytags(); ?>
-		</div><!-- .entry-meta -->
-		<div class="image-grid">
-			<ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
-				<?php imagegrid_get_images("$post->ID"); ?>
-			</ul>
-		</div><!-- .image-grid-->
-	</div><!-- .single-sidebar -->
-	<div class="entry-content large-8 columns">
-		<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentythirteen' ) ); ?>
-		<?php wp_link_pages( array( 'before' => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'twentythirteen' ) . '</span>', 'after' => '</div>', 'link_before' => '<span>', 'link_after' => '</span>' ) ); ?>
-	</div><!-- .entry-content -->
-	<?php else : ?>
-	<div class="entry-meta large-4 columns">
-  	<?php twentythirteen_onlytags(); ?>
-  </div><!-- .entry-meta -->
-	<div class="entry-content large-8 columns">
-		<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentythirteen' ) ); ?>
-		<?php wp_link_pages( array( 'before' => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'twentythirteen' ) . '</span>', 'after' => '</div>', 'link_before' => '<span>', 'link_after' => '</span>' ) ); ?>
-	</div><!-- .entry-content -->
+		<div class="entry-summary row">
+			<?php the_excerpt(); ?>
+		</div><!-- .entry-summary -->
+	<?php elseif ( is_single() ) : // Only display sidebar tags for Single ?>
+		<div class="entry-content row">
+			<div class="entry-meta large-2 columns tight">
+				<?php twentythirteen_onlytags(); ?>
+			</div><!-- .entry-meta -->
+			<div class="single-maincontent large-10 columns">
+				<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentythirteen' ) ); ?>
+				<?php wp_link_pages( array( 'before' => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'twentythirteen' ) . '</span>', 'after' => '</div>', 'link_before' => '<span>', 'link_after' => '</span>' ) ); ?>
+			</div><!-- ..single-maincontent -->
+		</div><!-- .entry-content -->
+		<?php else : ?>
+		<div class="entry-content row">
+			<div class="entry-meta large-2 columns tight">
+				<?php twentythirteen_onlytags(); ?>
+			</div><!-- .entry-meta -->
+			<div class="single-maincontent large-10 columns">
+				<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentythirteen' ) ); ?>
+				<?php wp_link_pages( array( 'before' => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'twentythirteen' ) . '</span>', 'after' => '</div>', 'link_before' => '<span>', 'link_after' => '</span>' ) ); ?>
+			</div><!-- ..single-maincontent -->
+		</div><!-- .entry-content -->
 	<?php endif; ?>
 
-	<footer class="entry-meta">
+	<footer class="entry-meta row">
 		<?php if ( comments_open() && ! is_single() ) : ?>
 			<div class="comments-link">
 				<?php comments_popup_link( '<span class="leave-reply">' . __( 'Leave a comment', 'twentythirteen' ) . '</span>', __( 'One comment so far', 'twentythirteen' ), __( 'View all % comments', 'twentythirteen' ) ); ?>
