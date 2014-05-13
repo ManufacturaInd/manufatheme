@@ -6,7 +6,7 @@
 get_header(); ?>
 
 	<div id="primary" class="content-area">
-		<div id="content" class="site-content" role="main">
+		<div id="content" class="site-content row collapse" role="main">
 
 		<?php if ( have_posts() ) : ?>
 
@@ -21,8 +21,8 @@ get_header(); ?>
 				the_post();
 			?>
 
-			<header class="archive-header row">
-				<h1 class="archive-title large-12 columns"><?php printf( __( 'All posts by %s', 'twentythirteen' ), '<span class="vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '" title="' . esc_attr( get_the_author() ) . '" rel="me">' . get_the_author() . '</a></span>' ); ?></h1>
+			<header class="archive-header row collapse">
+				<h1 class="archive-title"><?php printf( __( 'All posts by %s', 'twentythirteen' ), '<span class="vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '" title="' . esc_attr( get_the_author() ) . '" rel="me">' . get_the_author() . '</a></span>' ); ?></h1>
 			</header><!-- .archive-header -->
 
 			<?php

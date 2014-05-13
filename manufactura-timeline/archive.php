@@ -7,11 +7,11 @@
 get_header(); ?>
 
 	<div id="primary" class="content-area">
-		<div id="content" class="site-content" role="main">
+		<div id="content" class="site-content row collapse" role="main">
 
 		<?php if ( have_posts() ) : ?>
-			<header class="archive-header row">
-				<h1 class="archive-title large-12 columns"><?php
+			<header class="archive-header row collapse">
+				<h1 class="archive-title"><?php
 					if ( is_day() ) :
 						printf( __( 'Daily Archives: %s', 'twentythirteen' ), get_the_date() );
 					elseif ( is_month() ) :

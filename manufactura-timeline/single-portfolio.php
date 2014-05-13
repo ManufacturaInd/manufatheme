@@ -7,7 +7,7 @@
 get_header(); ?>
 
 	<div id="primary" class="content-area">
-		<div id="content" class="site-content" role="main">
+		<div id="content" class="site-content row collapse" role="main">
 
 			<?php /* The loop */ ?>
 			<?php while ( have_posts() ) : the_post(); ?>
@@ -17,13 +17,13 @@ get_header(); ?>
 						<p class="entry-date large-2 columns tight"><?php twentythirteen_entry_date(); ?></p>
 					</header><!-- .entry-header -->
 
-					<div class="entry-content row">
-						<div class="single-sidebar large-4 columns tight">
+					<div class="entry-content row collapse">
+						<div class="single-sidebar large-3 columns">
 							<div class="entry-meta">
 								<?php twentythirteen_onlytags(); ?>
 							</div><!-- .entry-meta -->
-							<div class="image-grid">
-								<ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
+							<div>
+								<ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-3">
 									<?php imagegrid_get_images("$post->ID"); ?>
 								</ul>
 							</div><!-- .image-grid-->

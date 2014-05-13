@@ -11,7 +11,7 @@
 get_header(); ?>
 
 	<div id="primary" class="content-area">
-		<div id="content" class="site-content row" role="main">
+		<div id="content" class="site-content row collapse" role="main">
 
 		<?php if ( have_posts() ) : ?>
 			<header class="archive-header">

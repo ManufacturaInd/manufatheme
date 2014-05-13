@@ -5,7 +5,7 @@
  */
 ?>
 
-<header class="page-header row">
+<header class="page-header row collapse">
 	<h1 class="page-title large-12 columns"><?php _e( 'Nothing Found', 'twentythirteen' ); ?></h1>
 </header>
 

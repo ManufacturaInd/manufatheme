@@ -8,10 +8,10 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>">
-	<header class="entry-header row">
+	<header class="entry-header row collapse">
 		<?php if ( is_single() ) : ?>
-		<h2 class="entry-title large-10 columns tight"><?php the_title(); ?></h2>
-		<p class="entry-date large-2 columns tight"><?php twentythirteen_entry_date(); ?></p>
+		<h2 class="entry-title large-10 columns"><?php the_title(); ?></h2>
+		<p class="entry-date large-2 columns"><?php twentythirteen_entry_date(); ?></p>
 		<?php else : ?>
 		<h2 class="entry-title">
 			<a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
@@ -20,12 +20,12 @@
 	</header><!-- .entry-header -->
 
 	<?php if ( is_search() ) : // Only display Excerpts for Search ?>
-		<div class="entry-summary row">
+		<div class="entry-summary row collapse">
 			<?php the_excerpt(); ?>
 		</div><!-- .entry-summary -->
 	<?php elseif ( is_single() ) : // Only display sidebar tags for Single ?>
-		<div class="entry-content row">
-			<div class="entry-meta large-2 columns tight">
+		<div class="entry-content row collapse">
+			<div class="entry-meta large-2 columns">
 				<?php twentythirteen_onlytags(); ?>
 			</div><!-- .entry-meta -->
 			<div class="single-maincontent large-10 columns">

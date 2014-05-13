@@ -7,7 +7,7 @@
 get_header(); ?>
 
 	<div id="primary" class="content-area">
-		<div id="content" class="site-content" role="main">
+		<div id="content" class="site-content row collapse" role="main">
 
 		<h4 class="row">Portfolio</h4>
  		<?php
@@ -46,7 +46,7 @@ get_header(); ?>
         }
 		  ?>
 
-		<h4 class="row">Other</h4>	
+		<h4 class="row">Writings</h4>	
       <?php
 
         $blogtime = date('Y');

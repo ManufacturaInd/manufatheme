@@ -204,13 +204,13 @@ function twentythirteen_paging_nav() {
 		return;
 	?>
 	<nav class="navigation paging-navigation" role="navigation">
-		<div class="nav-links row">
+		<div class="nav-links row collapse">
 			<?php if ( get_next_posts_link() ) : ?>
-			<div class="nav-previous large-6 tight"><?php next_posts_link( __( '<span class="meta-nav columns">&larr;</span> Older posts', 'twentythirteen' ) ); ?></div>
+			<div class="nav-previous large-6 columns"><?php next_posts_link( __( '<span class="meta-nav columns">&larr;</span> Older posts', 'twentythirteen' ) ); ?></div>
 			<?php endif; ?>
 
 			<?php if ( get_previous_posts_link() ) : ?>
-			<div class="nav-next large-6 tight"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'twentythirteen' ) ); ?></div>
+			<div class="nav-next large-6 columns"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'twentythirteen' ) ); ?></div>
 			<?php endif; ?>
 
 		</div><!-- .nav-links -->
@@ -238,11 +238,11 @@ function twentythirteen_post_nav() {
 		return;
 	?>
 	<nav class="navigation post-navigation" role="navigation">
-		<div class="nav-links row">
-			<div class="nav-previous large-6 tight">
+		<div class="nav-links row collapse">
+			<div class="nav-previous large-6 columns">
 				<?php previous_post_link( '%link', _x( '<span class="meta-nav">&larr;</span> %title', 'Previous post link', 'twentythirteen' ) ); ?>
 			</div>
-			<div class="nav-next large-6 tight">
+			<div class="nav-next large-6 columns">
 				<?php next_post_link( '%link', _x( '%title <span class="meta-nav">&rarr;</span>', 'Next post link', 'twentythirteen' ) ); ?>
 			</div>
 		</div><!-- .nav-links -->
